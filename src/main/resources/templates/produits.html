@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="htto://www.hymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Prosuits</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<p></p>
+	<div class="container">
+		<form th:action="@{index}">
+			<ul class="nav nav-pills">
+				<li><h5>Mot clé</h5></li>
+				<li><input type="text" name="mc" th:value="${mc}"></li>
+				<li><button class="btn btn-primary">Rechercher</button></li>
+			</ul>
+				
+		</form>
+	</div>
+	<p></p>
+	<div class="container">
+		<table class="table table-striped table-dark">
+			<thead>
+				<tr>
+					<th>Id</th><th>Désignation</th><th>Prix</th><th>Quantité</th>
+				</tr>
+			</thead>
+			<body>
+				<tr th:each="p,status:${listProduits}">
+					<td th:text="${p.id}"></td>
+					<td th:text="${p.designation}"></td>
+					<td th:text="${p.prix}"></td> 
+					<td th:text="${p.quantite}"></td>
+					<td><a th:href="@{delete(id=${p.id},page=${currentPage},size=${size},mc=${mc})}">Delete</a></td>
+				</tr>
+			</body>
+		</table>
+	</div>
+	<p></p>
+	<div class="container">
+		<ul class="nav nav-pills">
+			<li th:class="${currentPage}==${status.index}?'active':''" th:each="p,status:${pages}">
+				<a th:href="@{index(page=${status.index},size=${size},mc=${mc})}" th:text="${status.index  }"></a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
