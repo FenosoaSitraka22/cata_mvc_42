@@ -10,14 +10,15 @@ import org.springframework.context.ApplicationContext;
 public class CataMvc42Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CataMvc42Application.class, args);
 		ApplicationContext ac = SpringApplication.run(CataMvc42Application.class, args);
+		
 		ProduitRepository pr = ac.getBean(ProduitRepository.class);
 		for (int i = 0; i < 30; i++) {
 			String s =String.format("%d", i);
 			Double prix = (double) (i*10);
 			Produit p = new Produit(s,prix,i);
 			pr.save(p);
+			System.out.println("execute");
 		}
 	}
 
