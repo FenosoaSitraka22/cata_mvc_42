@@ -32,6 +32,7 @@
 					<td th:text="${p.prix}"></td> 
 					<td th:text="${p.quantite}"></td>
 					<td><a th:href="@{delete(id=${p.id},page=${currentPage},size=${size},mc=${mc})}">Delete</a></td>
+					<td><a th:href="@{edit(id=${p.id},page=${currentPage},size=${size},mc=${mc})}"> Edit</a></td>
 				</tr>
 			</body>
 		</table>

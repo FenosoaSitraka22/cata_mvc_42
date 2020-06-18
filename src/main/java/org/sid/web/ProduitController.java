@@ -22,7 +22,7 @@ public class ProduitController {
 	@Autowired
 	private ProduitRepository produitRepository;
 	
-	@RequestMapping(value="/index2")
+	@RequestMapping(value="/index")
 	public String index(Model model,@RequestParam(name="page",defaultValue = "0")int p,
 			@RequestParam(name="size",defaultValue = "5")int s, @RequestParam(name="mc", defaultValue="")String mc) {
 		Page<Produit> pageproduits = produitRepository.ProduitParMC("%"+mc+"%",PageRequest.of(p, s));
@@ -38,6 +38,17 @@ public class ProduitController {
 	public String delete(Long id,@RequestParam(name="page",defaultValue = "0")int p,
 			@RequestParam(name="size",defaultValue = "5")int s, @RequestParam(name="mc", defaultValue="")String mc) {
 			produitRepository.deleteById(id);
-		return "redirect:/index2?page="+p+"&size="+s+"&mc="+mc;
+		return "redirect:/index?page="+p+"&size="+s+"&mc="+mc;
+	}
+	@RequestMapping(value="/edit",method =RequestMethod.GET)
+	public String edit(Model model, Long id, @RequestParam(name="page",defaultValue="0") int p,
+			@RequestParam(name="size",defaultValue="5")int s, @RequestParam(name="mc", defaultValue="")String mc) {
+		Produit produit = produitRepository.getOne(id);
+		model.addAttribute("produit",produit);
+		model.addAttribute("currentPage",p);
+		model.addAttribute("size",s);
+		model.addAttribute("mc",mc);
+		return "edit";
 	}
 }
+
