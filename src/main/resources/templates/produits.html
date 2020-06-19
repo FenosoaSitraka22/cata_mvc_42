@@ -2,17 +2,24 @@
 <html xmlns:th="htto://www.hymeleaf.org">
 <head>
 <meta charset="UTF-8"/>
-<title>Prosuits</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<title>Products</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
+	crossorigin="anonymous"
+/>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/Style.css"
+	th:href="@{css/Style.css}"
+/>
 </head>
 <body>
 	<p></p>
 	<div class="container">
 		<form th:action="@{index}">
 			<ul class="nav nav-pills">
-				<li><h5>Mot clé</h5></li>
+				<li><h5>Key word</h5></li>
 				<li><input type="text" name="mc" th:value="${mc}"></li>
-				<li><button class="btn btn-primary">Rechercher</button></li>
+				<li><button class="btn btn-primary">Find</button></li>
 			</ul>
 				
 		</form>

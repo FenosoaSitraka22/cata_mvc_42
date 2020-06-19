@@ -3,10 +3,17 @@
 <head>
 <meta charset="UTF-8"/>
 <title>Nouvel produit</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
+	crossorigin="anonymous"
+/>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/Style.css"
+	th:href="@{css/Style.css}"
+/>
 </head>
 <body>
-	<div class="container">
+	<div class="spacer col-md-6 col-xs-12 ">
 		<div class="panel-default">
 			<div class= "panel-heading">Create a new product </div>
 			<p></p>
@@ -14,15 +21,18 @@
 				<form th:action="@{save}" method="post">
 					<div class="form-group">
 						<label class="control-label">Désignation</label>
-						<input class="form-control" type="text" name="designation" th:value="${produit.designation}"/> 	
+						<input class="form-control" type="text" name="designation" th:value="${produit.designation}"/>
+						<span class="red" th:errors="${produit.designation}"></span> 	
 					</div>
 					<div class="form-group">
 						<label class="control-label">Prix</label>
-						<input class="form-control" type="text" name="prix" th:value="${produit.prix}"/> 	
+						<input class="form-control" type="text" name="prix" th:value="${produit.prix}"/>
+						<span class="red" th:errors="${produit.prix}"></span> 	
 					</div>
 					<div class="form-group">
 						<label class="control-label">Quantité</label>
-						<input class="form-control" type="text" name="quantité" th:value="${produit.quantite}"/> 	
+						<input class="form-control" type="text" name="quantité" th:value="${produit.quantite}"/> 
+						<span class="red" th:errors="${produit.quantite}"></span>	
 					</div>
 					<button type="submit" class="btn btn-primary">Save</button>
 				</form>
