@@ -19,6 +19,9 @@
 	</div>
 	<p></p>
 	<div class="container">
+	<h4> <a th:href="@{form}">New product</a></h4>
+	</div>
+	<div class="container">
 		<table class="table table-striped table-dark">
 			<thead>
 				<tr>
@@ -31,7 +34,7 @@
 					<td th:text="${p.designation}"></td>
 					<td th:text="${p.prix}"></td> 
 					<td th:text="${p.quantite}"></td>
-					<td><a th:href="@{delete(id=${p.id},page=${currentPage},size=${size},mc=${mc})}">Delete</a></td>
+					<td><a onclick ="return confirm('Êtes vous sûre de vouloir suprimer cet produit ?')" th:href="@{delete(id=${p.id},page=${currentPage},size=${size},mc=${mc})}">Delete</a></td>
 					<td><a th:href="@{edit(id=${p.id},page=${currentPage},size=${size},mc=${mc})}"> Edit</a></td>
 				</tr>
 			</body>

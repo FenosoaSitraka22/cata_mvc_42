@@ -50,5 +50,15 @@ public class ProduitController {
 		model.addAttribute("mc",mc);
 		return "edit";
 	}
+	@RequestMapping(value="/form", method=RequestMethod.GET)
+	public String form(Model model) {
+		model.addAttribute("produit", new Produit());
+		return "Form";
+	}
+	@RequestMapping(value="/save",method=RequestMethod.POST)
+	public String save(Model model,Produit produit) {
+		produitRepository.save(produit);
+		return "Confirm";
+	}
 }
 
