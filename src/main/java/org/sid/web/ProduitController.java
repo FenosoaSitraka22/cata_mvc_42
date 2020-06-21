@@ -62,11 +62,14 @@ public class ProduitController {
 		return "Form";
 	}
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-	public String save(Model model,@Valid Produit produit, BindingResult br) {
-		if(br.hasErrors())
+	public String save(Model model,Long id,@Valid Produit produit, BindingResult br) {
+		if(br.hasErrors() ) {
+			model.addAttribute("id",id);
 			return "Form";
-		produitRepository.save(produit);
-		return "redirect:/index";
+		}else{	
+			produitRepository.save(produit);
+			return "redirect:/index";
+		}
 	}
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public String home() {

@@ -20,14 +20,17 @@
 				<li><h5>Key word</h5></li>
 				<li><input type="text" name="mc" th:value="${mc}"></li>
 				<li><button class="btn btn-primary">Find</button></li>
-			</ul>
-				
+			</ul>	
 		</form>
+		
 	</div>
 	<p></p>
-	<div class="container">
-	<h4> <a th:href="@{form}">New product</a></h4>
+	<div class="container spacer"><h4 class ="spacer"> <a th:href="@{form}">New product</a></h4>
 	</div>
+	<div class="container spacer">
+	<h4> List of product</h4>
+	</div>
+	
 	<div class="container">
 		<table class="table table-striped table-dark">
 			<thead>
@@ -42,7 +45,7 @@
 					<td th:text="${produit.prix}"></td> 
 					<td th:text="${produit.quantite}"></td>
 					<td><a onclick ="return confirm('Êtes vous sûre de vouloir suprimer cet produit ?')" th:href="@{delete(id=${produit.id},page=${currentPage},size=${size},mc=${mc})}">Delete</a></td>
-					<td><a th:href="@{form(id=${produit.id},page=${currentPage},size=${size},mc=${mc})}"> Edit</a></td>
+					<td><a th:href="@{form(id=${produit.id})}"> Edit</a></td>
 				</tr>
 			</body>
 		</table>

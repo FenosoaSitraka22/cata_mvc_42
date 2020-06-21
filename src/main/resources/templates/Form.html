@@ -2,7 +2,9 @@
 <html xmlns:th="htto://www.hymeleaf.org">
 <head>
 <meta charset="UTF-8"/>
-<title>Nouvel produit</title>
+<span th:if="${id!=null}"><title>Edit product</title></span>
+<span th:if="${id==null}"><title>New product</title></span>
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
 	crossorigin="anonymous"
