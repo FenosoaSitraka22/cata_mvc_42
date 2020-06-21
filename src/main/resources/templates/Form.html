@@ -15,10 +15,18 @@
 <body>
 	<div class="spacer col-md-6 col-xs-12 ">
 		<div class="panel-default">
-			<div class= "panel-heading">Create a new product </div>
+				<span th:if="${id!=null}"><div class= "panel-heading">Edit product </div></span>
+				<span th:if="${id==null}"><div class= "panel-heading"> Create a new product</div></span>
 			<p></p>
 			<div class="panel-body">
 				<form th:action="@{save}" method="post">
+					<span th:if="${id!=null}">
+						<div class="form-group">
+							<label class="control-label">ID</label>
+							<input class="form-control" name="id" th:value="${produit.id}" readonly th:text="${id}" ></input>
+	
+						</div>
+					</span>
 					<div class="form-group">
 						<label class="control-label">Désignation</label>
 						<input class="form-control" type="text" name="designation" th:value="${produit.designation}"/>

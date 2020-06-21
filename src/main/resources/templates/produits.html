@@ -36,13 +36,13 @@
 				</tr>
 			</thead>
 			<body>
-				<tr th:each="p,status:${listProduits}">
-					<td th:text="${p.id}"></td>
-					<td th:text="${p.designation}"></td>
-					<td th:text="${p.prix}"></td> 
-					<td th:text="${p.quantite}"></td>
-					<td><a onclick ="return confirm('Êtes vous sûre de vouloir suprimer cet produit ?')" th:href="@{delete(id=${p.id},page=${currentPage},size=${size},mc=${mc})}">Delete</a></td>
-					<td><a th:href="@{edit(id=${p.id},page=${currentPage},size=${size},mc=${mc})}"> Edit</a></td>
+				<tr th:each="produit,status:${listProduits}">
+					<td th:text="${produit.id}"></td>
+					<td th:text="${produit.designation}"></td>
+					<td th:text="${produit.prix}"></td> 
+					<td th:text="${produit.quantite}"></td>
+					<td><a onclick ="return confirm('Êtes vous sûre de vouloir suprimer cet produit ?')" th:href="@{delete(id=${produit.id},page=${currentPage},size=${size},mc=${mc})}">Delete</a></td>
+					<td><a th:href="@{form(id=${produit.id},page=${currentPage},size=${size},mc=${mc})}"> Edit</a></td>
 				</tr>
 			</body>
 		</table>
@@ -50,7 +50,7 @@
 	<p></p>
 	<div class="container">
 		<ul class="nav nav-pills">
-			<li th:class="${currentPage}==${status.index}?'active':''" th:each="p,status:${pages}">
+			<li th:class="${currentPage}==${status.index}?'active':''" th:each="produit,status:${pages}">
 				<a th:href="@{index(page=${status.index},size=${size},mc=${mc})}" th:text="${status.index  }"></a>
 			</li>
 		</ul>

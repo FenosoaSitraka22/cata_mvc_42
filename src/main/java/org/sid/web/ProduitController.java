@@ -52,8 +52,13 @@ public class ProduitController {
 		return "edit";
 	}
 	@RequestMapping(value="/form", method=RequestMethod.GET)
-	public String form(Model model) {
-		model.addAttribute("produit", new Produit());
+	public String form(Model model,Long id,@RequestParam(name="page",defaultValue = "0")int p,
+			@RequestParam(name="size",defaultValue = "5")int s, @RequestParam(name="mc", defaultValue="")String mc) {
+		model.addAttribute("id",id);
+		if(id!=null)
+			model.addAttribute("produit", produitRepository.getOne(id));
+		else 
+			model.addAttribute("produit", new Produit());
 		return "Form";
 	}
 	@RequestMapping(value="/save",method=RequestMethod.POST)
@@ -61,7 +66,11 @@ public class ProduitController {
 		if(br.hasErrors())
 			return "Form";
 		produitRepository.save(produit);
-		return "Confirm";
+		return "redirect:/index";
+	}
+	@RequestMapping(value="/",method=RequestMethod.GET)
+	public String home() {
+		return "redirect:/index";
 	}
 }
 
